@@ -5,9 +5,20 @@
     import App from './App';
 
     describe('App component', () => {
+       // Test Initial State
       it('starts with a count of 0', () => {
         const wrapper = shallow(<App />);
         const text = wrapper.find('p').text();
         expect(text).toEqual('Count: 0');
       });
+
+      // Test User Interaction / Mouse Click On Button Event
+      it('increments count by 1 when the increment button is clicked', () => {
+        const wrapper = shallow(<App />);
+        const incrementBtn = wrapper.find('button.increment');
+        incrementBtn.simulate('click');
+        const text = wrapper.find('p').text();
+        expect(text).toEqual('Count: 1');
+      });
     });
+
